@@ -79,7 +79,12 @@ namespace Ex01_04
         {
             if (isStringPolindrom(i_string))
             {
-                string formattedMessage = string.Format("The string: {0} is polindrom.", i_string);
+                string formattedMessage = string.Format("The string: {0} is a polindrom.", i_string);
+                Console.WriteLine(formattedMessage);
+            }
+            else
+            {
+                string formattedMessage = string.Format("The string: {0} is not a polindrom.", i_string);
                 Console.WriteLine(formattedMessage);
             }
         }
@@ -104,6 +109,11 @@ namespace Ex01_04
             if (i_number % 4 == 0)
             {
                 string formattedMessage = string.Format("The number:{0} is divided by 4.", i_number);
+                Console.WriteLine(formattedMessage);
+            }
+            else
+            {
+                string formattedMessage = string.Format("The number:{0} is not divided by 4.", i_number);
                 Console.WriteLine(formattedMessage);
             }
         }
