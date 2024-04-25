@@ -11,6 +11,7 @@ namespace Ex01_04
         public static void Main()
         {
             ManageSequenceOfTheProgram();
+            Console.ReadLine();
         }
         public static void ManageSequenceOfTheProgram()
         {
@@ -78,7 +79,8 @@ namespace Ex01_04
         {
             if (isStringPolindrom(i_string))
             {
-                Console.WriteLine("The string: " + i_string + " is polindrom.");
+                string formattedMessage = string.Format("The string: {0} is polindrom.", i_string);
+                Console.WriteLine(formattedMessage);
             }
         }
         public static bool isStringPolindrom(string i_string) //Recursive polindrom function.
@@ -101,7 +103,8 @@ namespace Ex01_04
         {
             if (i_number % 4 == 0)
             {
-                Console.WriteLine("The number: " + i_number + " is divided by 4.");
+                string formattedMessage = string.Format("The number:{0} is divided by 4.", i_number);
+                Console.WriteLine(formattedMessage);
             }
         }
         public static void printNumberOfLowercases(string i_string)
@@ -114,7 +117,8 @@ namespace Ex01_04
                     lowercaseCharactersCounter++;
                 }
             }
-            Console.WriteLine("The string: " + i_string + " contains: " + lowercaseCharactersCounter + " lowecase characters.");
+            string formattedMessage = string.Format("The string: {0} contains: {1} lowecase characters.", i_string, lowercaseCharactersCounter);
+            Console.WriteLine(formattedMessage);
         }
     }
 }
