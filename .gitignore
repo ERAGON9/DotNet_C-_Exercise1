@@ -1,0 +1,48 @@
+# Ignore Visual Studio files
+.vs/
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.suo
+*.userprefs
+*.sln.docstates
+
+# Ignore NuGet packages
+*.nuget/
+packages/
+
+# Ignore build outputs
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Nn][Yy]/
+
+# Ignore Visual Studio project specific files
+*.csproj.user
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.sdf
+*.opensdf
+*.suo
+*.sln.docstates
+
+# Ignore ReSharper files
+_ReSharper*/
+*.resharper
+*.DotSettings
+
+# Ignore Team Explorer files
+[Tt]eam[Tt]ools/
+
+# Ignore Rider files
+.idea/
+*.sln.iml
+
+# Ignore build results
+[Bb]in/
+[Oo]bj/
