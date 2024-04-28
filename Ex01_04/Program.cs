@@ -8,126 +8,138 @@ namespace Ex01_04
 {
     internal class Program
     {
+        const bool v_StringPolinom = true;
         public static void Main()
         {
-            ManageSequenceOfTheProgram();
-            Console.ReadLine();
+            manageSequenceOfTheProgram();
+            Console.ReadLine();             //For the command line to not close automatically at the end of the program. 
         }
-        public static void ManageSequenceOfTheProgram()
+        private static void manageSequenceOfTheProgram()
         {
-            string inputStr = getInputFromUser();
-            printIfPolindrom(inputStr);
-            int inputAsNumber;
-            if (int.TryParse(inputStr, out inputAsNumber))
+            string inputStr;
+            Int64 inputAsNumber;
+            
+            inputStr = getInputFromUser();
+            printIfPalindrome(inputStr);
+            if (Int64.TryParse(inputStr, out inputAsNumber))
             {
+                
                 printIfNumberDividedBy4(inputAsNumber);
             }
             else
             {
-                printNumberOfLowercases(inputStr);
+                printNumberOfLowerCases(inputStr);
             }
         }
-        public static string getInputFromUser()
+        private static string getInputFromUser()
         {
-            Console.WriteLine("Pleae enter 10 letters string, that include only letters or only numbers.");
-            string o_inputStr = Console.ReadLine();
-            while (CheckValidations(o_inputStr) == false)
+            string inputStr;
+
+            Console.WriteLine("Please enter 10 letters string, that include only letters or only numbers.");
+            inputStr = Console.ReadLine();
+            while (!checkValidations(inputStr))
             {
-                o_inputStr = Console.ReadLine();
+                inputStr = Console.ReadLine();
             }
 
-            return o_inputStr;
+            return inputStr;
         }
-        public static bool CheckValidations(string i_string)
+        private static bool checkValidations(string i_string)
         {
-            bool isStringValid = false;
-            bool isStringLengthValid = CheckValideStringLength(i_string);
-            bool isStringContentValid = CheckValideStringContant(i_string);
-            if (isStringLengthValid && isStringContentValid)
-            {
-                isStringValid = true;
-            }
+            bool isStringValid, isStringLengthValid, isStringContentValid;
+
+            isStringLengthValid = checkValideStringLength(i_string);
+            isStringContentValid = checkValideStringContant(i_string);
+            isStringValid = isStringLengthValid && isStringContentValid;
 
             return isStringValid;
         }
-        public static bool CheckValideStringLength(string i_string)
-        {
-            bool isStringValid = true;
-            if (i_string.Length != 10)
-            {
-                Console.WriteLine("The string you entered is not 10 letters, try again.");
-                isStringValid = false;
-            }
-            return isStringValid;
-        }
-        public static bool CheckValideStringContant(string i_string)
+        private static bool checkValideStringLength(string i_string)
         {
             bool isStringValid;
-            if (i_string.All(char.IsDigit) || i_string.All(char.IsLetter))
+
+            isStringValid = i_string.Length == 10;
+            if (!isStringValid)
             {
-                isStringValid = true;
-            }
-            else
-            {
-                Console.WriteLine("The string you entered is not included only letters or only numbers, try again.");
-                isStringValid = false;
+                Console.WriteLine("The string you entered is not 10 letters, try again.");
             }
 
             return isStringValid;
         }
-        public static void printIfPolindrom(string i_string)
+        private static bool checkValideStringContant(string i_string)
         {
-            if (isStringPolindrom(i_string))
+            bool isStringValid;
+
+            isStringValid = i_string.All(char.IsDigit) || i_string.All(char.IsLetter);
+            if (!isStringValid)
             {
-                string formattedMessage = string.Format("The string: {0} is a polindrom.", i_string);
-                Console.WriteLine(formattedMessage);
+                Console.WriteLine("Wrong input, the string you entered is not included only letters or only numbers, try again.");
+            }
+
+            return isStringValid;
+        }
+        private static void printIfPalindrome(string i_string)
+        {
+            string formattedMessage;
+
+            if (isStringPalindrome(i_string))
+            {
+                formattedMessage = string.Format("{0} is a palindrome.", i_string);
             }
             else
             {
-                string formattedMessage = string.Format("The string: {0} is not a polindrom.", i_string);
-                Console.WriteLine(formattedMessage);
+                formattedMessage = string.Format("{0} is not a palindrome.", i_string);
             }
+
+            Console.WriteLine(formattedMessage);
         }
-        public static bool isStringPolindrom(string i_string) //Recursive polindrom function.
+        private static bool isStringPalindrome(string i_string) //Recursive polindrom function.
         {
             if (i_string.Length == 0)
-                return true;
+            {
+                return v_StringPolinom;
+            }
             else
             {
                 if (i_string[0] == i_string[i_string.Length - 1])
                 {
-                    return isStringPolindrom(i_string.Substring(1, i_string.Length - 2));
+                    return isStringPalindrome(i_string.Substring(1, i_string.Length - 2));
                 }
                 else
                 {
-                    return false;
+                    return !v_StringPolinom;
                 }
             }
         }
-        public static void printIfNumberDividedBy4(int i_number)
+        private static void printIfNumberDividedBy4(Int64 i_number)
         {
+            string formattedMessage;
+
             if (i_number % 4 == 0)
             {
-                string formattedMessage = string.Format("The number:{0} is divided by 4.", i_number);
-                Console.WriteLine(formattedMessage);
+                formattedMessage = string.Format("The number:{0} is divided by 4.", i_number);
             }
             else
             {
-                string formattedMessage = string.Format("The number:{0} is not divided by 4.", i_number);
-                Console.WriteLine(formattedMessage);
+                formattedMessage = string.Format("The number:{0} is not divided by 4.", i_number);
             }
+
+            Console.WriteLine(formattedMessage);
         }
-        public static void printNumberOfLowercases(string i_string)
+        private static void printNumberOfLowerCases(string i_string)
         {
-            int lowercaseCharactersCounter = 0;
+            int lowerCasesCounter = 0;
+            string formattedMessage;
+
             foreach (char character in i_string)
             {
                 if (char.IsLower(character))
                 {
-                    lowercaseCharactersCounter++;
+                    lowerCasesCounter++;
                 }
             }
-            string formattedMessage = string.Format("The string: {0} contains: {1} lowecase characters.", i_string, lowercaseCharactersCounter);
+
+            formattedMessage = string.Format("The string: {0} contains: {1} lowercase characters.", i_string, lowerCasesCounter);
             Console.WriteLine(formattedMessage);
         }
     }
