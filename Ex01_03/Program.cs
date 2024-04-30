@@ -10,7 +10,7 @@ namespace Ex01_03
     public class Program
     {
         public static void Main()
-        {
+        { 
             int height = GetHeightFromUser();
 
             Ex01_02.Program.PrintAsterisksDiamond(height);
