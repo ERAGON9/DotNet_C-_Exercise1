@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Ex01_02;
 
 namespace Ex01_03
 {
@@ -14,28 +9,27 @@ namespace Ex01_03
             int height = GetHeightFromUser();
 
             Ex01_02.Program.PrintAsterisksDiamond(height);
-
-            System.Console.WriteLine("\nPlease press 'Enter' to exit");
-            System.Console.ReadLine();
+            Console.WriteLine("\nPlease press 'Enter' to exit");
+            Console.ReadLine();
         }
-
         public static int GetHeightFromUser()
         {
-            int height = 0;
-            Console.WriteLine("Please enter diamond height:");
-            string heightStr = Console.ReadLine();
-            System.Console.WriteLine();
-            bool isValidInput = IsValidInput(heightStr, ref height);
+            int height = 0; //לא טוב
+            string heightStr;
+            bool isValidInput, isEven; 
 
-            while(!isValidInput)
+            Console.WriteLine("Please enter diamond height:");
+            heightStr = Console.ReadLine();
+            Console.WriteLine();
+            isValidInput = IsValidInput(heightStr, ref height); //לשנות למשתנה out
+            while (!isValidInput)
             {
                 Console.WriteLine("Please enter diamond height:");
                 heightStr = Console.ReadLine();
-                isValidInput = IsValidInput(heightStr, ref height);
+                isValidInput = IsValidInput(heightStr, ref height); //לשנות למשתנה out
             }
-
-            bool isEven = height % 2 == 0;
-            if(isEven)
+            isEven = height % 2 == 0;
+            if (isEven)
             {
                 height++;
             }
@@ -43,10 +37,10 @@ namespace Ex01_03
             return height;
         }
 
-        public static bool IsValidInput(string i_input, ref int io_Height)
+        public static bool IsValidInput(string i_Input, ref int io_Height)
         {
             bool result;
-            bool isInteger = IsInteger(ref i_input, ref io_Height);
+            bool isInteger = IsInteger(ref i_Input, ref io_Height);
 
             if (!isInteger)
             {
