@@ -57,8 +57,9 @@ namespace Ex01_04
         private static bool checkValideStringLength(string i_string)
         {
             bool isStringValid;
+            const int validLength = 10;
 
-            isStringValid = i_string.Length == 10;
+            isStringValid = i_string.Length == validLength;
             if (!isStringValid)
             {
                 Console.WriteLine("The string you entered is not 10 letters, try again.");
