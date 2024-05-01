@@ -23,7 +23,6 @@ namespace Ex01_04
             printIfPalindrome(inputStr);
             if (Int64.TryParse(inputStr, out inputAsNumber))
             {
-                
                 printIfNumberDividedBy4(inputAsNumber);
             }
             else
@@ -48,13 +47,13 @@ namespace Ex01_04
         {
             bool isStringValid, isStringLengthValid, isStringContentValid;
 
-            isStringLengthValid = checkValideStringLength(i_string);
-            isStringContentValid = checkValideStringContant(i_string);
+            isStringLengthValid = checkValidStringLength(i_string);
+            isStringContentValid = checkValidStringContant(i_string);
             isStringValid = isStringLengthValid && isStringContentValid;
 
             return isStringValid;
         }
-        private static bool checkValideStringLength(string i_string)
+        private static bool checkValidStringLength(string i_string)
         {
             bool isStringValid;
             const int validLength = 10;
@@ -63,12 +62,11 @@ namespace Ex01_04
             if (!isStringValid)
             {
                 Console.WriteLine("The string you entered is not 10 letters, try again.");
-                isStringValid = false;
             }
 
             return isStringValid;
         }
-        private static bool checkValideStringContant(string i_string)
+        private static bool checkValidStringContant(string i_string)
         {
             bool isStringValid;
 
