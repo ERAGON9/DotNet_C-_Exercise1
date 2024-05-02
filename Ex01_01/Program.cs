@@ -10,62 +10,101 @@ namespace Ex01_01
     {
         public static void Main()
         {
-            Console.WriteLine("Please enter 3 integers with 9 digit each.");
+            RunProgram();
 
-            int[] numbers = new int[3];
+        }
 
-            for (int i = 0; i < 3; i++)
-            {
-                string numberStr = Console.ReadLine();
-                bool valid = IfStringIsNumber(numberStr);
-                while(!valid)
-                {
-                    Console.WriteLine("Wrong input. Please enter valid integer.");
-                    numberStr = Console.ReadLine();
-                    valid = IfStringIsNumber(numberStr);
-                }
+        public static void RunProgram()
+        {
+            int[] numbers;
 
-            }
-            int number1;
+            GetInputFromUser(out numbers);
+
             
+            
+            int number1;
             int number2 = int.Parse(Console.ReadLine());
             int number3 = int.Parse(Console.ReadLine());
 
 
 
+
         }
 
-        public static bool IfStringIsNumber(string numberStr)
+        public static void GetInputFromUser(out int[] numbers) //make the function shorter, try not to use an array
+        {
+            numbers = new int[3];
+            string numberStr;
+            bool valid;
+
+            Console.WriteLine("Please enter 3 integers with 9 digit each.");
+            for (int i = 0; i < 3; i++)
+            {
+                numberStr = Console.ReadLine();
+                valid = IsValidInput(numberStr);
+                while (!valid)
+                {
+                    Console.WriteLine("Wrong input. Please enter valid integer.");
+                    numberStr = Console.ReadLine();
+                    valid = IsStringIsNumber(numberStr);
+                }
+                numbers[i] = ConvertBinarystringToDecimalInt(numberStr)
+            }
+        }
+        public static bool IsValidInput(string input) //fix names of parameters , maybe use the one down "checkValidationInteger"
+        {
+            bool valid, isInteger, is9Digits;
+
+            isInteger= IsStringIsNumber(input);
+            is9Digits= IsNumber9Digit(input);
+            valid = isInteger && is9Digits;
+
+            return valid;
+        }
+        public static bool IsStringIsNumber(string numberStr) //fix returns, names of parameters
         {
             int number;
             bool succeded = int.TryParse(Console.ReadLine(), out number);
             if (!succeded)
                 return false;
             return true;
-
         }
-        public static bool IfNumber9Digit(string number)
+        public static bool IsNumber9Digit(string number)
         {
             const int Length = 9;
-            if (number.Length != Length)
-                return false;
-            return true;
-        }
+            bool result = number.Length == Length;
 
-        public static bool checkValidationInteger(string numberStr)
+            return result;
+            //if (number.Length != Length)
+            //    return false;
+            //return true;
+        }
+        public static int ConvertBinarystringToDecimalInt(string input)
         {
-            bool valid = IfStringIsNumber(numberStr);
-            if (IfStringIsNumber(numberStr) == false)
-                Console.WriteLine("Wrong type of input. Plese type integer.");
-            else if (IfNumber9Digit(numberStr))
-                Console.WriteLine("Wrong input Length. Please enter 9 digit integer.");
-            else if (int.Parse(numberStr) >= 0)
-                Console.WriteLine("Please enter positive integer.");
-            else
-                return true;
-            return false;
+            int digit, power;
+
+            for(int i = 0; i<9; i++)
+            {
+                
+            }
+
 
         }
+
+        //public static bool checkValidationInteger(string numberStr)
+        //{
+        //    bool valid = IfStringIsNumber(numberStr);
+        //    if (IfStringIsNumber(numberStr) == false)
+        //        Console.WriteLine("Wrong type of input. Plese type integer.");
+        //    else if (IfNumber9Digit(numberStr))
+        //        Console.WriteLine("Wrong input Length. Please enter 9 digit integer.");
+        //    else if (int.Parse(numberStr) >= 0)
+        //        Console.WriteLine("Please enter positive integer.");
+        //    else
+        //        return true;
+        //    return false;
+
+        //}
 
 
     }
