@@ -8,6 +8,7 @@ namespace Ex01_01
 {
     internal class Program
     {
+        public const int k_NumOfDigitsInTheBinaryNumber = 9;
         public static void Main()
         {
             RunProgram();
@@ -16,75 +17,95 @@ namespace Ex01_01
 
         public static void RunProgram()
         {
-            int[] numbers;
+            //int[] numbers;
+            int num1, num2, num3;
 
-            GetInputFromUser(out numbers);
+            GetInputFromUser(out num1, out num2, out num3);
 
             
-            
-            int number1;
-            int number2 = int.Parse(Console.ReadLine());
-            int number3 = int.Parse(Console.ReadLine());
+      
 
 
 
 
         }
 
-        public static void GetInputFromUser(out int[] numbers) //make the function shorter, try not to use an array
+        public static void GetInputFromUser(out int num1, out int num2, out int num3) //make the function shorter, try not to use an array
         {
-            numbers = new int[3];
+            Console.WriteLine("Please enter 3 integers with 9 digit each.");
+            num1 = GetBinaryNumber();
+            num2 = GetBinaryNumber();
+            num3 = GetBinaryNumber();
+        }
+        public static int GetBinaryNumber()
+        {
             string numberStr;
+            int number;
             bool valid;
 
-            Console.WriteLine("Please enter 3 integers with 9 digit each.");
-            for (int i = 0; i < 3; i++)
+            numberStr = Console.ReadLine();
+            valid = IsValidInput(numberStr);
+            while (!valid)
             {
+                Console.WriteLine("Wrong input. Please enter valid integer.");
                 numberStr = Console.ReadLine();
-                valid = IsValidInput(numberStr);
-                while (!valid)
-                {
-                    Console.WriteLine("Wrong input. Please enter valid integer.");
-                    numberStr = Console.ReadLine();
-                    valid = IsStringIsNumber(numberStr);
-                }
-                numbers[i] = ConvertBinarystringToDecimalInt(numberStr);
-
+                valid = IsStringNumber(numberStr);
             }
-        }
-        public static bool IsValidInput(string input) //fix names of parameters , maybe use the one down "checkValidationInteger"
-        {
-            bool valid, isInteger, is9Digits;
+            number = ConvertBinarystringToDecimalInt(numberStr);
 
-            isInteger= IsStringIsNumber(input);
+            return number;
+        }
+        public static bool IsValidInput(string input) //fix names of parameters
+        {
+            bool valid, isInteger, is9Digits, isPositive;
+
+            isInteger= IsStringNumber(input);
             is9Digits= IsNumber9Digit(input);
+            isPositive = 
+
             valid = isInteger && is9Digits;
+            if (!isInteger)
+            {
+                Console.WriteLine("Wrong type of input. Plese type integer.\n");
+            }
+            else
+            {
+                if (!is9Digits)
+                {
+                    Console.WriteLine("Wrong input Length. Please enter 9 digit integer.");
+                }
+                if (!isPositive)
+                {
+                    Console.WriteLine("Please enter positive integer.");
+                }
+            }
 
             return valid;
         }
-        public static bool IsStringIsNumber(string numberStr) //fix returns, names of parameters
+        public static bool IsStringNumber(string numberStr) //fix names of parameters
         {
             int number;
-            bool succeded = int.TryParse(Console.ReadLine(), out number);
-            if (!succeded)
-                return false;
-            return true;
+            bool succeded = int.TryParse(numberStr, out number); //check what is happening here, maybe return the number after parse but how? ref or out?
+
+            return succeded;
         }
         public static bool IsNumber9Digit(string number)
         {
-            const int Length = 9; 
-            bool result = number.Length == Length;
+            bool result;
+            result = number.Length == k_NumOfDigitsInTheBinaryNumber;
 
             return result;
-            //if (number.Length != Length)
-            //    return false;
-            //return true;
+        }
+        public static bool isPositive(string number)
+        {
+            bool isPositive;
+
         }
         public static int ConvertBinarystringToDecimalInt(string strInt)
         {
             int outputNumber, digit, power;
 
-            for (int i = 0; i<9; i++)
+            for (int i = 0; i< k_NumOfDigitsInTheBinaryNumber; i++)
             {
 
                 digit = ConvertDigitFromAsciiToInt(strInt[i]);
@@ -106,6 +127,8 @@ namespace Ex01_01
         {
             power = length - i - 1;
         }
+
+
         //public static bool checkValidationInteger(string numberStr)
         //{
         //    bool valid = IfStringIsNumber(numberStr);
