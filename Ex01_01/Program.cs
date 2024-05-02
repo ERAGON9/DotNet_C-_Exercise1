@@ -48,7 +48,8 @@ namespace Ex01_01
                     numberStr = Console.ReadLine();
                     valid = IsStringIsNumber(numberStr);
                 }
-                numbers[i] = ConvertBinarystringToDecimalInt(numberStr)
+                numbers[i] = ConvertBinarystringToDecimalInt(numberStr);
+
             }
         }
         public static bool IsValidInput(string input) //fix names of parameters , maybe use the one down "checkValidationInteger"
@@ -71,7 +72,7 @@ namespace Ex01_01
         }
         public static bool IsNumber9Digit(string number)
         {
-            const int Length = 9;
+            const int Length = 9; 
             bool result = number.Length == Length;
 
             return result;
@@ -79,18 +80,32 @@ namespace Ex01_01
             //    return false;
             //return true;
         }
-        public static int ConvertBinarystringToDecimalInt(string input)
+        public static int ConvertBinarystringToDecimalInt(string strInt)
         {
-            int digit, power;
+            int outputNumber, digit, power;
 
-            for(int i = 0; i<9; i++)
+            for (int i = 0; i<9; i++)
             {
+
+                digit = ConvertDigitFromAsciiToInt(strInt[i]);
+                power = 
+               // CalcValueOfCurrentDigit(digit, power);
                 
             }
 
-
+            //return outputNumber;
         }
 
+        public static int ConvertDigitFromAsciiToInt(char character)
+        {
+            int digit = character - '0';
+
+            return digit;
+        }
+        public static int CalcValueOfCurrentDigit(int digit, int power) //Think how to save the length 9
+        {
+            power = length - i - 1;
+        }
         //public static bool checkValidationInteger(string numberStr)
         //{
         //    bool valid = IfStringIsNumber(numberStr);
