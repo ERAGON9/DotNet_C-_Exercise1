@@ -12,35 +12,28 @@ namespace Ex01_01
         public static void Main()
         {
             RunProgram();
-
         }
 
         public static void RunProgram()
         {
-            //int[] numbers;
+            string binaryStr1, binaryStr2, binaryStr3;
             int num1, num2, num3;
 
-            GetInputFromUser(out num1, out num2, out num3);
-
-            
-      
-
-
-
-
+            GetBinaryStringsFromUser(out binaryStr1, out binaryStr2, out binaryStr3);
+            ConvertBinaryStringsToDecimalIntegers(binaryStr1, binaryStr2, binaryStr3, out num1, out num2, out num3);
+            PrintNumbersAscendigInDecimal(num1, num2, num3);
+            PrintStatistics(binaryStr1, binaryStr2, binaryStr3, num1, num2, num3);
         }
-
-        public static void GetInputFromUser(out int num1, out int num2, out int num3) //make the function shorter, try not to use an array
+        public static void GetBinaryStringsFromUser(out string binaryStr1, out string binaryStr2, out string binaryStr3)
         {
-            Console.WriteLine("Please enter 3 integers with 9 digit each.");
-            num1 = GetBinaryNumber();
-            num2 = GetBinaryNumber();
-            num3 = GetBinaryNumber();
+            Console.WriteLine("Please enter 3 binary strings with 9 digit each.");
+            binaryStr1 = GetBinaryString();
+            binaryStr2 = GetBinaryString();
+            binaryStr3 = GetBinaryString();
         }
-        public static int GetBinaryNumber()
+        public static string GetBinaryString()
         {
             string numberStr;
-            int number;
             bool valid;
 
             numberStr = Console.ReadLine();
@@ -51,10 +44,33 @@ namespace Ex01_01
                 numberStr = Console.ReadLine();
                 valid = IsStringNumber(numberStr);
             }
-            number = ConvertBinarystringToDecimalInt(numberStr);
 
-            return number;
+            return numberStr;
         }
+        public static void ConvertBinaryStringsToDecimalIntegers(string binaryStr1, string binaryStr2, string binaryStr3, out int num1, out int num2, out int num3)
+        {
+            num1 = ConvertBinaryStringToDecimalInteger(binaryStr1);
+            num2 = ConvertBinaryStringToDecimalInteger(binaryStr2);
+            num3 = ConvertBinaryStringToDecimalInteger(binaryStr3);
+        }
+        //public static int GetBinaryNumber()
+        //{
+        //    string numberStr;
+        //    int number;
+        //    bool valid;
+
+        //    numberStr = Console.ReadLine();
+        //    valid = IsValidInput(numberStr);
+        //    while (!valid)
+        //    {
+        //        Console.WriteLine("Wrong input. Please enter valid integer.");
+        //        numberStr = Console.ReadLine();
+        //        valid = IsStringNumber(numberStr);
+        //    }
+        //    number = ConvertBinaryStringToDecimalInt(numberStr);
+
+        //    return number;
+        //}
         public static bool IsValidInput(string input) //fix names of parameters
         {
             bool valid, isInteger, is9Digits, isPositive;
@@ -99,9 +115,9 @@ namespace Ex01_01
         public static bool isPositive(string number)
         {
             bool isPositive;
-
+            
         }
-        public static int ConvertBinarystringToDecimalInt(string strInt)
+        public static int ConvertBinaryStringToDecimalInteger(string strInt)
         {
             int outputNumber, digit, power;
 
