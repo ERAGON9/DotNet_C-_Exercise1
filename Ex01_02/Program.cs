@@ -5,18 +5,18 @@ namespace Ex01_02
 {
     public class Program
     {
-        public const int k_DiamondHeight = 9;
-        public const int k_FirstRow = 0;
+        private const int k_DiamondHeight = 9;
+        private const int k_FirstRow = 0;
         public static void Main()
         {
             PrintAsterisksDiamond(k_DiamondHeight);
-            EndProgram();
+            endProgram();
         }
         public static void PrintAsterisksDiamond(int i_DiamondHeight)
         {
-            PrintAsterisksDiamondHelper(i_DiamondHeight, k_FirstRow);
+            printAsterisksDiamondHelper(i_DiamondHeight, k_FirstRow);
         }
-        public static void PrintAsterisksDiamondHelper(int i_DiamondHeight, int i_CurrentRow)
+        private static void printAsterisksDiamondHelper(int i_DiamondHeight, int i_CurrentRow)
         {
             int rowWidth = i_DiamondHeight;
             int middleRow = i_DiamondHeight / 2;
@@ -36,11 +36,11 @@ namespace Ex01_02
             }
             else
             {
-                PrintAsterisksDiamondHelper(i_DiamondHeight, i_CurrentRow + 1);
+                printAsterisksDiamondHelper(i_DiamondHeight, i_CurrentRow + 1);
                 Console.WriteLine(resultString);
             }
         }
-        public static void EndProgram()
+        private static void endProgram()
         {
             Console.WriteLine("\nPlease press 'Enter' to exit");
             Console.ReadLine();

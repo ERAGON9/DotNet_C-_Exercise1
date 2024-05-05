@@ -5,7 +5,7 @@ namespace Ex01_04
 {
     internal class Program
     {
-        public const bool K_StringPolinom = true;
+        private const bool K_StringPolinom = true;
         public static void Main()
         {
             manageSequenceOfTheProgram();
@@ -26,7 +26,7 @@ namespace Ex01_04
                 printNumberOfLowerCases(inputStr);
             }
 
-            EndProgram();
+            endProgram();
         }
         private static string getInputFromUser()
         {
@@ -140,7 +140,7 @@ namespace Ex01_04
             formattedMessage = string.Format("The string: {0} contains: {1} lowercase characters.", i_string, lowerCasesCounter);
             Console.WriteLine(formattedMessage);
         }
-        public static void EndProgram()
+        private static void endProgram()
         {
             Console.WriteLine("\nPlease press 'Enter' to exit");
             Console.ReadLine();

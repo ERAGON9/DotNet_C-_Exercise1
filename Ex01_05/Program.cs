@@ -17,7 +17,7 @@ namespace Ex01_05
             printAmoutDigitsDevidedByThree(inputAsString);
             printBiggestDigit(inputAsString);
             printAvgOfDigits(inputAsString);
-            EndProgram();
+            endProgram();
         }
         private static string getInputFromUser()
         {
@@ -153,7 +153,7 @@ namespace Ex01_05
             formattedMessage = string.Format("The number average digits is: {0}", avgOfDigits);
             Console.WriteLine(formattedMessage);
         }
-        public static void EndProgram()
+        private static void endProgram()
         {
             Console.WriteLine("\nPlease press 'Enter' to exit");
             Console.ReadLine();

@@ -4,28 +4,28 @@ namespace Ex01_03
 {
     public class Program
     {
-        public const bool k_Valid = true;
+        private const bool k_Valid = true;
         public static void Main()
         { 
-            int height = GetHeightFromUser();
+            int height = getHeightFromUser();
 
             Ex01_02.Program.PrintAsterisksDiamond(height);
-            EndProgram();
+            endProgram();
         }
-        public static int GetHeightFromUser()
+        private static int getHeightFromUser()
         {
             int height;
             string heightAsStr;
-            bool isValidInput, isNumberEven; 
+            bool isValid, isNumberEven; 
 
             Console.WriteLine("Please enter diamond height:");
             do
             {
                 heightAsStr = Console.ReadLine();
-                isValidInput = IsValidInput(heightAsStr, out height);
-            } while (!isValidInput);
+                isValid = isValidInput(heightAsStr, out height);
+            } while (!isValid);
 
-            SpaceLine();
+            spaceLine();
             isNumberEven = height % 2 == 0;
             if (isNumberEven)
             {
@@ -34,20 +34,20 @@ namespace Ex01_03
 
             return height;
         }
-        public static bool IsValidInput(string i_InputStr, out int o_Height)
+        private static bool isValidInput(string i_InputStr, out int o_Height)
         {
             bool result = !k_Valid, isStrintAnInteger, isNumPositive;
 
-            isStrintAnInteger = IsStringInteger(i_InputStr, out o_Height);
+            isStrintAnInteger = isStringInteger(i_InputStr, out o_Height);
             if (isStrintAnInteger)
             {
-                isNumPositive = IsIntegerPositive(o_Height);
+                isNumPositive = isIntegerPositive(o_Height);
                 result = isNumPositive; // Equal to  (result = isStrintAnInteger && isNumPositive) because inside the if statement.
             }
             
             return result;
         }
-        public static bool IsStringInteger(string i_input, out int o_Height)
+        private static bool isStringInteger(string i_input, out int o_Height)
         {
             bool success = int.TryParse(i_input, out o_Height);
 
@@ -58,7 +58,7 @@ namespace Ex01_03
 
             return success;
         }
-        public static bool IsIntegerPositive(int i_num)
+        private static bool isIntegerPositive(int i_num)
         {
             bool valid = k_Valid;
 
@@ -70,11 +70,11 @@ namespace Ex01_03
 
             return valid;
         }
-        public static void SpaceLine()
+        private static void spaceLine()
         {
             Console.WriteLine();
         }
-        public static void EndProgram()
+        private static void endProgram()
         {
             Console.WriteLine("\nPlease press 'Enter' to exit");
             Console.ReadLine();
