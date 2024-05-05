@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ex01_05
 {
     internal class Program
     {
-        const bool v_StringValid = true;
         public static void Main()
         {
             manageSequenceOfTheProgram();
-            Console.ReadLine();             //For the command line to not close automatically at the end of the program. 
         }
         private static void manageSequenceOfTheProgram()
         {
@@ -23,6 +17,7 @@ namespace Ex01_05
             printAmoutDigitsDevidedByThree(inputAsString);
             printBiggestDigit(inputAsString);
             printAvgOfDigits(inputAsString);
+            EndProgram();
         }
         private static string getInputFromUser()
         {
@@ -39,6 +34,7 @@ namespace Ex01_05
         }
         private static bool checkValidations(string i_string)
         {
+            const bool v_StringValid = true;
             bool isStringValid = !v_StringValid, isStringNumber, isNumberLengthValid, isNumberPositive;
             int inputAsNumber;
 
@@ -156,6 +152,11 @@ namespace Ex01_05
             avgOfDigits /= i_numberAsString.Length;
             formattedMessage = string.Format("The number average digits is: {0}", avgOfDigits);
             Console.WriteLine(formattedMessage);
+        }
+        public static void EndProgram()
+        {
+            Console.WriteLine("\nPlease press 'Enter' to exit");
+            Console.ReadLine();
         }
     }
 }

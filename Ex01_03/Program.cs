@@ -4,66 +4,80 @@ namespace Ex01_03
 {
     public class Program
     {
+        public const bool k_Valid = true;
         public static void Main()
         { 
             int height = GetHeightFromUser();
 
             Ex01_02.Program.PrintAsterisksDiamond(height);
-            Console.WriteLine("\nPlease press 'Enter' to exit");
-            Console.ReadLine();
+            EndProgram();
         }
         public static int GetHeightFromUser()
         {
-            int height = 0; //לא טוב
-            string heightStr;
-            bool isValidInput, isEven; 
+            int height;
+            string heightAsStr;
+            bool isValidInput, isNumberEven; 
 
             Console.WriteLine("Please enter diamond height:");
-            heightStr = Console.ReadLine();
-            Console.WriteLine();
-            isValidInput = IsValidInput(heightStr, ref height); //לשנות למשתנה out
-            while (!isValidInput)
+            do
             {
-                Console.WriteLine("Please enter diamond height:");
-                heightStr = Console.ReadLine();
-                isValidInput = IsValidInput(heightStr, ref height); //לשנות למשתנה out
-            }
-            isEven = height % 2 == 0;
-            if (isEven)
+                heightAsStr = Console.ReadLine();
+                isValidInput = IsValidInput(heightAsStr, out height);
+            } while (!isValidInput);
+
+            SpaceLine();
+            isNumberEven = height % 2 == 0;
+            if (isNumberEven)
             {
                 height++;
             }
 
             return height;
         }
-
-        public static bool IsValidInput(string i_Input, ref int io_Height)
+        public static bool IsValidInput(string i_InputStr, out int o_Height)
         {
-            bool result;
-            bool isInteger = IsInteger(ref i_Input, ref io_Height);
+            bool result = !k_Valid, isStrintAnInteger, isNumPositive;
 
-            if (!isInteger)
+            isStrintAnInteger = IsStringInteger(i_InputStr, out o_Height);
+            if (isStrintAnInteger)
             {
-                Console.WriteLine("Wrong input type: height must be integer. Try again");
-                result = false;
+                isNumPositive = IsIntegerPositive(o_Height);
+                result = isNumPositive; // Equal to  (result = isStrintAnInteger && isNumPositive) because inside the if statement.
             }
-            else if (io_Height <= 0)
-            {
-                Console.WriteLine("Wrong input value: height must be positive. Try again");
-                result = false;
-            }
-            else
-            {
-                result = true;
-            }
-
+            
             return result;
         }
-        public static bool IsInteger(ref string io_input, ref int io_Height)
+        public static bool IsStringInteger(string i_input, out int o_Height)
         {
-            bool success = int.TryParse(io_input, out io_Height);
+            bool success = int.TryParse(i_input, out o_Height);
+
+            if (!success)
+            {
+                Console.WriteLine("Wrong input type: height must be integer. Try again");
+            }
 
             return success;
+        }
+        public static bool IsIntegerPositive(int i_num)
+        {
+            bool valid = k_Valid;
+
+            if (i_num <= 0)
+            {
+                Console.WriteLine("Wrong input value: height must be positive. Try again");
+                valid = !k_Valid;
+            }
+
+            return valid;
+        }
+        public static void SpaceLine()
+        {
+            Console.WriteLine();
+        }
+        public static void EndProgram()
+        {
+            Console.WriteLine("\nPlease press 'Enter' to exit");
+            Console.ReadLine();
         }
     }
 }

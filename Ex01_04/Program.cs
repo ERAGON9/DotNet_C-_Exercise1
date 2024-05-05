@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ex01_04
 {
     internal class Program
     {
-        const bool v_StringPolinom = true;
+        public const bool K_StringPolinom = true;
         public static void Main()
         {
             manageSequenceOfTheProgram();
-            Console.ReadLine();             //For the command line to not close automatically at the end of the program. 
         }
         private static void manageSequenceOfTheProgram()
         {
@@ -29,6 +25,8 @@ namespace Ex01_04
             {
                 printNumberOfLowerCases(inputStr);
             }
+
+            EndProgram();
         }
         private static string getInputFromUser()
         {
@@ -93,11 +91,11 @@ namespace Ex01_04
 
             Console.WriteLine(formattedMessage);
         }
-        private static bool isStringPalindrome(string i_string) //Recursive polindrom function.
+        private static bool isStringPalindrome(string i_string) // Recursive palindrome function. (Recursive functions by definition use more than one return statements.)
         {
             if (i_string.Length == 0)
             {
-                return v_StringPolinom;
+                return K_StringPolinom;
             }
             else
             {
@@ -107,7 +105,7 @@ namespace Ex01_04
                 }
                 else
                 {
-                    return !v_StringPolinom;
+                    return !K_StringPolinom;
                 }
             }
         }
@@ -141,6 +139,11 @@ namespace Ex01_04
 
             formattedMessage = string.Format("The string: {0} contains: {1} lowercase characters.", i_string, lowerCasesCounter);
             Console.WriteLine(formattedMessage);
+        }
+        public static void EndProgram()
+        {
+            Console.WriteLine("\nPlease press 'Enter' to exit");
+            Console.ReadLine();
         }
     }
 }
