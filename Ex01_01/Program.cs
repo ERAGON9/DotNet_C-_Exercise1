@@ -39,29 +39,24 @@ namespace Ex01_01
             bool valid;
 
             numberStr = Console.ReadLine();
-            valid = checkIfValidStringAndPrintErrorMessagesIfNeeded(numberStr);
+            valid = checkIfValidString(numberStr);
             while (!valid)
             {
                 Console.WriteLine("Please enter your binary string:");
                 numberStr = Console.ReadLine();
-                valid = checkIfValidStringAndPrintErrorMessagesIfNeeded(numberStr);
+                valid = checkIfValidString(numberStr);
             }
 
             return numberStr;
         }
-        private static bool checkIfValidStringAndPrintErrorMessagesIfNeeded(string i_Str) //Maybe put every eror print in the checking function.
+        private static bool checkIfValidString(string i_Str) //Maybe put every eror print in the checking function.
         {
-            bool valid, isStringRepresentsInteger;
+            bool valid;
 
-            isStringRepresentsInteger = isStringNumber(i_Str);
-            if (!isStringRepresentsInteger)
+            valid = isStringNumber(i_Str);
+            if (valid)
             {
-                Console.WriteLine("Wrong type of input. Input must be an integer.");
-                valid = false;
-            }
-            else
-            {
-                valid = checkIfStringRepresentsValidIntegerAndPrintErrorMessagesIfNeeded(i_Str);
+                valid = checkIfStringRepresentsValidInteger(i_Str);
             }
 
             return valid;
@@ -71,26 +66,22 @@ namespace Ex01_01
             int number;
             bool succeded = int.TryParse(i_Str, out number);
 
+            if (!succeded)
+            {
+                Console.WriteLine("Wrong type of input. Input must be an integer.");
+            }
+
             return succeded;
         }
-        private static bool checkIfStringRepresentsValidIntegerAndPrintErrorMessagesIfNeeded(string i_IntegerStr) //Maybe put every eror print in the checking function.
+        private static bool checkIfStringRepresentsValidInteger(string i_IntegerStr) //Maybe put every eror print in the checking function.
         {
             bool valid, is9Digits, isPositive, isBinary = !k_TrueInitialize;
 
             is9Digits = isNumber9Digits(i_IntegerStr);
             isPositive = isNumberPositive(i_IntegerStr);
-            if (!is9Digits)
+            if (is9Digits)
             {
-                Console.WriteLine("Wrong input Length. Input must be a 9 digit integer.");
-            }
-            else
-            {
-                isBinary = checkIfStringOfLength9RepresentsBinaryNumberAndPrintErrorMessagesIfNeeded(i_IntegerStr);
-            }
-
-            if (!isPositive)
-            {
-                Console.WriteLine("Wrong input value, Input must be a positive intege.");
+                isBinary = checkIfStringOfLength9RepresentsBinaryNumber(i_IntegerStr);
             }
 
             valid = is9Digits && isPositive && isBinary;
@@ -102,6 +93,10 @@ namespace Ex01_01
             bool result;
 
             result = i_IntegerStr.Length == k_NumOfDigitsInBinaryNumber;
+            if (!result)
+            {
+                Console.WriteLine("Wrong input Length. Input must be a 9 digit integer.");
+            }
 
             return result;
         }
@@ -112,10 +107,14 @@ namespace Ex01_01
 
             int.TryParse(i_IntegerStr, out number);
             isPositive = number > 0;
+            if (!isPositive)
+            {
+                Console.WriteLine("Wrong input value, Input must be a positive intege.");
+            }
 
             return isPositive;
         }
-        private static bool checkIfStringOfLength9RepresentsBinaryNumberAndPrintErrorMessagesIfNeeded(string i_IntegerStr)
+        private static bool checkIfStringOfLength9RepresentsBinaryNumber(string i_IntegerStr)
         {
             bool isBinary;
 
@@ -258,13 +257,12 @@ namespace Ex01_01
                 Console.WriteLine("The count of numbers which are power of 2 is: " + count);
             }
         }
-        private static bool isNumberPowerOfTwo(int i_Num) //Really need the maxValue?
+        private static bool isNumberPowerOfTwo(int i_Num)
         {
-            int maxValue = (int)Math.Pow(2, 9) - 1;
             int powersOfTwo = k_OneInitialize;
             bool IsPowerOfTwo;
 
-            while (powersOfTwo < i_Num && powersOfTwo <= maxValue / 2)
+            while (powersOfTwo < i_Num)
             {
                 powersOfTwo *= 2;
             }
