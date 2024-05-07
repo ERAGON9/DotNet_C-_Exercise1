@@ -99,23 +99,27 @@ namespace Ex01_04
             Console.WriteLine(formattedMessage);
         }
         
-        private static bool isStringPalindrome(string i_string) // Recursive palindrome function. (Recursive functions by definition use more than one return statements.)
+        private static bool isStringPalindrome(string i_string)
         {
+            bool validPalindrome;
+
             if (i_string.Length == 0)
             {
-                return K_StringPolinom;
+                validPalindrome = K_StringPolinom;
             }
             else
             {
                 if (i_string[0] == i_string[i_string.Length - 1])
                 {
-                    return isStringPalindrome(i_string.Substring(1, i_string.Length - 2));
+                    validPalindrome = isStringPalindrome(i_string.Substring(1, i_string.Length - 2));
                 }
                 else
                 {
-                    return !K_StringPolinom;
+                    validPalindrome = !K_StringPolinom;
                 }
             }
+
+            return validPalindrome;
         }
         
         private static void printIfNumberDividedBy4(Int64 i_number)

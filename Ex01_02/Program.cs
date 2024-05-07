@@ -33,11 +33,7 @@ namespace Ex01_02
             resultString.Append(asterisksString);
             resultString.Append(spacesString);
             Console.WriteLine(resultString);
-            if (isDoneRecursion)
-            {
-                return;
-            }
-            else
+            if (!isDoneRecursion)
             {
                 printAsterisksDiamondHelper(i_DiamondHeight, i_CurrentRow + 1);
                 Console.WriteLine(resultString);
