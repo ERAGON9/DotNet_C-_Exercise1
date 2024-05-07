@@ -6,10 +6,12 @@ namespace Ex01_04
     internal class Program
     {
         private const bool K_StringPolinom = true;
+
         public static void Main()
         {
             manageSequenceOfTheProgram();
         }
+        
         private static void manageSequenceOfTheProgram()
         {
             string inputStr;
@@ -28,6 +30,7 @@ namespace Ex01_04
 
             endProgram();
         }
+        
         private static string getInputFromUser()
         {
             string inputStr;
@@ -41,6 +44,7 @@ namespace Ex01_04
 
             return inputStr;
         }
+        
         private static bool checkValidations(string i_string)
         {
             bool isStringValid, isStringLengthValid, isStringContentValid;
@@ -51,6 +55,7 @@ namespace Ex01_04
 
             return isStringValid;
         }
+        
         private static bool checkValidStringLength(string i_string)
         {
             bool isStringValid;
@@ -64,6 +69,7 @@ namespace Ex01_04
 
             return isStringValid;
         }
+        
         private static bool checkValidStringContant(string i_string)
         {
             bool isStringValid;
@@ -76,6 +82,7 @@ namespace Ex01_04
 
             return isStringValid;
         }
+        
         private static void printIfPalindrome(string i_string)
         {
             string formattedMessage;
@@ -91,6 +98,7 @@ namespace Ex01_04
 
             Console.WriteLine(formattedMessage);
         }
+        
         private static bool isStringPalindrome(string i_string) // Recursive palindrome function. (Recursive functions by definition use more than one return statements.)
         {
             if (i_string.Length == 0)
@@ -109,6 +117,7 @@ namespace Ex01_04
                 }
             }
         }
+        
         private static void printIfNumberDividedBy4(Int64 i_number)
         {
             string formattedMessage;
@@ -124,6 +133,7 @@ namespace Ex01_04
 
             Console.WriteLine(formattedMessage);
         }
+        
         private static void printNumberOfLowerCases(string i_string)
         {
             int lowerCasesCounter = 0;
@@ -140,6 +150,7 @@ namespace Ex01_04
             formattedMessage = string.Format("The string: {0} contains: {1} lowercase characters.", i_string, lowerCasesCounter);
             Console.WriteLine(formattedMessage);
         }
+        
         private static void endProgram()
         {
             Console.WriteLine("\nPlease press 'Enter' to exit");

@@ -5,6 +5,7 @@ namespace Ex01_03
     public class Program
     {
         private const bool k_Valid = true;
+
         public static void Main()
         { 
             int height = getHeightFromUser();
@@ -12,6 +13,7 @@ namespace Ex01_03
             Ex01_02.Program.PrintAsterisksDiamond(height);
             endProgram();
         }
+
         private static int getHeightFromUser()
         {
             int height;
@@ -34,6 +36,7 @@ namespace Ex01_03
 
             return height;
         }
+        
         private static bool isValidInput(string i_InputStr, out int o_Height)
         {
             bool result = !k_Valid, isStrintAnInteger, isNumPositive;
@@ -47,6 +50,7 @@ namespace Ex01_03
             
             return result;
         }
+        
         private static bool isStringInteger(string i_input, out int o_Height)
         {
             bool success = int.TryParse(i_input, out o_Height);
@@ -58,6 +62,7 @@ namespace Ex01_03
 
             return success;
         }
+        
         private static bool isIntegerPositive(int i_num)
         {
             bool valid = k_Valid;
@@ -70,10 +75,12 @@ namespace Ex01_03
 
             return valid;
         }
+        
         private static void spaceLine()
         {
             Console.WriteLine();
         }
+        
         private static void endProgram()
         {
             Console.WriteLine("\nPlease press 'Enter' to exit");

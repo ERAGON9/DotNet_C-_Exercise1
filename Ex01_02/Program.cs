@@ -7,15 +7,18 @@ namespace Ex01_02
     {
         private const int k_DiamondHeight = 9;
         private const int k_FirstRow = 0;
+
         public static void Main()
         {
             PrintAsterisksDiamond(k_DiamondHeight);
             endProgram();
         }
+
         public static void PrintAsterisksDiamond(int i_DiamondHeight)
         {
             printAsterisksDiamondHelper(i_DiamondHeight, k_FirstRow);
         }
+
         private static void printAsterisksDiamondHelper(int i_DiamondHeight, int i_CurrentRow)
         {
             int rowWidth = i_DiamondHeight;
@@ -40,6 +43,7 @@ namespace Ex01_02
                 Console.WriteLine(resultString);
             }
         }
+        
         private static void endProgram()
         {
             Console.WriteLine("\nPlease press 'Enter' to exit");

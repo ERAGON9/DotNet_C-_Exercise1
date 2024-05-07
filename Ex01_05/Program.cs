@@ -8,6 +8,7 @@ namespace Ex01_05
         {
             manageSequenceOfTheProgram();
         }
+
         private static void manageSequenceOfTheProgram()
         {
             string inputAsString;
@@ -19,6 +20,7 @@ namespace Ex01_05
             printAvgOfDigits(inputAsString);
             endProgram();
         }
+
         private static string getInputFromUser()
         {
             string inputAsString;
@@ -32,6 +34,7 @@ namespace Ex01_05
 
             return inputAsString;
         }
+        
         private static bool checkValidations(string i_string)
         {
             const bool v_StringValid = true;
@@ -49,6 +52,7 @@ namespace Ex01_05
 
             return isStringValid;
         }
+        
         private static bool checkValidateIsStringInteger(string i_string)
         {
             bool isNumberValid;
@@ -61,6 +65,7 @@ namespace Ex01_05
 
             return isNumberValid;
         }
+        
         private static bool checkValidLength(string i_numberAsString)
         {
             bool isInputValid;
@@ -74,6 +79,7 @@ namespace Ex01_05
 
             return isInputValid;
         }
+        
         private static bool checkValidNumberPositive(int i_number)
         {
             bool isNumberValid;
@@ -86,6 +92,7 @@ namespace Ex01_05
 
             return isNumberValid;
         }
+        
         private static void printAmountDigitsLessThanUnityDigit(string i_numberAsString)
         {
             int unityDigit, currentDigitToCheck, charsLessThanUnityCounter = 0;
@@ -105,6 +112,7 @@ namespace Ex01_05
             formattedMessage = string.Format("The number contains: {0} digits that smaller than the unity digit.", charsLessThanUnityCounter);
             Console.WriteLine(formattedMessage);
         }
+        
         private static void printAmoutDigitsDevidedByThree(string i_numberAsString) 
         {
             int currentDigitToCheck, charsDevidedByThreeCounter = 0;
@@ -122,6 +130,7 @@ namespace Ex01_05
             formattedMessage = string.Format("The number contains: {0} digits that devided by three.", charsDevidedByThreeCounter);
             Console.WriteLine(formattedMessage);
         }
+        
         private static void printBiggestDigit(string i_numberAsString) 
         {
             int maxDigit = 0, currentDigit;
@@ -139,6 +148,7 @@ namespace Ex01_05
             formattedMessage = string.Format("The number biggest digit is: {0}", maxDigit);
             Console.WriteLine(formattedMessage);
         }
+        
         private static void printAvgOfDigits(string i_numberAsString) 
         {
             float avgOfDigits = 0;
@@ -153,6 +163,7 @@ namespace Ex01_05
             formattedMessage = string.Format("The number average digits is: {0}", avgOfDigits);
             Console.WriteLine(formattedMessage);
         }
+        
         private static void endProgram()
         {
             Console.WriteLine("\nPlease press 'Enter' to exit");

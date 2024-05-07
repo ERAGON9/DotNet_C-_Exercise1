@@ -10,10 +10,12 @@ namespace Ex01_01
         private const char k_ZeroChar = '0';
         private const char k_OneChar = '1';
         private const bool k_TrueInitialize = true;
+
         public static void Main()
         {
             runProgram();
         }
+
         private static void runProgram()
         {
             string binaryStr1, binaryStr2, binaryStr3;
@@ -25,6 +27,7 @@ namespace Ex01_01
             printStatistics(binaryStr1, binaryStr2, binaryStr3, num1, num2, num3);
             endProgram();
         }
+
         private static void getBinaryStringsFromUser(out string o_BinaryStr1, out string o_BinaryStr2, out string o_BinaryStr3)
         {
             Console.WriteLine("Please enter 3 binary number with 9 digit each, press enter after each number:");
@@ -33,6 +36,7 @@ namespace Ex01_01
             o_BinaryStr3 = getBinaryString();
             spaceLine();
         }
+        
         private static string getBinaryString()
         {
             string numberStr;
@@ -49,6 +53,7 @@ namespace Ex01_01
 
             return numberStr;
         }
+
         private static bool checkIfValidString(string i_Str) //Maybe put every eror print in the checking function.
         {
             bool valid;
@@ -61,6 +66,7 @@ namespace Ex01_01
 
             return valid;
         }
+        
         private static bool isStringNumber(string i_Str)
         {
             int number;
@@ -73,6 +79,7 @@ namespace Ex01_01
 
             return succeded;
         }
+        
         private static bool checkIfStringRepresentsValidInteger(string i_IntegerStr) //Maybe put every eror print in the checking function.
         {
             bool valid, is9Digits, isPositive, isBinary = !k_TrueInitialize;
@@ -88,6 +95,7 @@ namespace Ex01_01
 
             return valid;
         }
+        
         private static bool isNumber9Digits(string i_IntegerStr)
         {
             bool result;
@@ -100,6 +108,7 @@ namespace Ex01_01
 
             return result;
         }
+        
         private static bool isNumberPositive(string i_IntegerStr)
         {
             bool isPositive;
@@ -114,6 +123,7 @@ namespace Ex01_01
 
             return isPositive;
         }
+        
         private static bool checkIfStringOfLength9RepresentsBinaryNumber(string i_IntegerStr)
         {
             bool isBinary;
@@ -126,6 +136,7 @@ namespace Ex01_01
 
             return isBinary;
         }
+        
         private static bool isStringBinaryNumber(string i_IntegerStr)
         {
             bool isBinary = k_TrueInitialize;
@@ -137,6 +148,7 @@ namespace Ex01_01
 
             return isBinary;
         }
+        
         private static bool isCharOneOrZero(char i_Char)
         {
             bool result, isOne, isZero;
@@ -147,12 +159,14 @@ namespace Ex01_01
 
             return result;
         }
+        
         private static void convertBinaryStringsToDecimalIntegers(string i_BinaryStr1, string i_BinaryStr2, string i_BinaryStr3, out int o_Num1, out int o_Num2, out int o_Num3)
         {
             o_Num1 = convertBinaryStringToDecimalInteger(i_BinaryStr1);
             o_Num2 = convertBinaryStringToDecimalInteger(i_BinaryStr2);
             o_Num3 = convertBinaryStringToDecimalInteger(i_BinaryStr3);
         }
+        
         private static int convertBinaryStringToDecimalInteger(string i_BinaryStr)
         {
             int result = k_ZeroInitialize;
@@ -165,14 +179,17 @@ namespace Ex01_01
 
             return result;
         }
+        
         private static void shiftNumberLeftOneTime(ref int io_Number)
         {
             io_Number *= 2;
         }
+        
         private static void addCurrentBinaryDigitToResult(char i_BinaryChar, ref int io_Result)
         {
             io_Result += i_BinaryChar - k_ZeroChar;
         }
+        
         private static void printNumbersAscendigInDecimal(int i_Num1, int i_Num2, int i_Num3)
         {
             int[] numbers = { i_Num1, i_Num2, i_Num3 };
@@ -182,6 +199,7 @@ namespace Ex01_01
             message = string.Format("The integers in ascending order are: {0}, {1}, {2}", numbers[0], numbers[1], numbers[2]);
             Console.WriteLine(message);
         }
+        
         private static void printStatistics(string i_BinaryStr1, string i_BinaryStr2, string i_BinaryStr3, int i_Num1, int i_Num2, int i_Num3)
         {
             printOnesAverage(i_BinaryStr1, i_BinaryStr2, i_BinaryStr3);
@@ -191,6 +209,7 @@ namespace Ex01_01
             printBiggestNumber(i_Num1, i_Num2, i_Num3);
             printSmallestNumber(i_Num1, i_Num2, i_Num3);
         }
+        
         private static void printOnesAverage(string i_BinaryStr1, string i_BinaryStr2, string i_BinaryStr3)
         {
             double average;
@@ -198,6 +217,7 @@ namespace Ex01_01
             average = averageOfCharInInputStrings(i_BinaryStr1, i_BinaryStr2, i_BinaryStr3, k_OneChar);
             Console.WriteLine("Ones average is: " + average);
         }
+        
         private static double averageOfCharInInputStrings(string i_BinaryStr1, string i_BinaryStr2, string i_BinaryStr3, char i_Character)
         {
             int charCount, charCountStr1, charCountStr2, charCountStr3;
@@ -212,6 +232,7 @@ namespace Ex01_01
 
             return average;
         }
+        
         private static int countOccurencesOfCharInBinaryString(string i_BinaryStr, char i_LookFor)
         {
             int count = k_ZeroInitialize;
@@ -226,6 +247,7 @@ namespace Ex01_01
 
             return count;
         }
+        
         private static void printZerosAverage(string i_BinaryStr1, string i_BinaryStr2, string i_BinaryStr3)
         {
             double average;
@@ -233,6 +255,7 @@ namespace Ex01_01
             average = averageOfCharInInputStrings(i_BinaryStr1, i_BinaryStr2, i_BinaryStr3, k_ZeroChar);
             Console.WriteLine("Zeros average is: " + average);
         }
+        
         private static void printCountOfPowerOf2(int i_Num1, int i_Num2, int i_Num3)
         {
             int[] numbers = { i_Num1, i_Num2, i_Num3 };
@@ -257,6 +280,7 @@ namespace Ex01_01
                 Console.WriteLine("The count of numbers which are power of 2 is: " + count);
             }
         }
+        
         private static bool isNumberPowerOfTwo(int i_Num)
         {
             int powersOfTwo = k_OneInitialize;
@@ -271,6 +295,7 @@ namespace Ex01_01
 
             return IsPowerOfTwo;
         }
+        
         private static void printCountOfAscendings(int i_Num1, int i_Num2, int i_Num3)
         {
             int[] numbers = { i_Num1, i_Num2, i_Num3 };
@@ -297,6 +322,7 @@ namespace Ex01_01
                 Console.WriteLine("The count of numbers which in ascensing order is: " + count);
             }
         }
+        
         private static bool isAscendingString(string i_DecimalStr)
         {
             bool isAscending = k_TrueInitialize;
@@ -313,6 +339,7 @@ namespace Ex01_01
 
             return isAscending;
         }
+        
         private static void printBiggestNumber(int i_Num1, int i_Num2, int i_Num3)
         {
             int maxFromNum1AndNum2;
@@ -322,6 +349,7 @@ namespace Ex01_01
             maxValue = Math.Max(maxFromNum1AndNum2, i_Num3);
             Console.WriteLine("The maximum value is: " + maxValue);
         }
+        
         private static void printSmallestNumber(int i_Num1, int i_Num2, int i_Num3)
         {
             int minFromNum1AndNum2;
@@ -331,11 +359,13 @@ namespace Ex01_01
             minValue = Math.Min(minFromNum1AndNum2, i_Num3);
             Console.WriteLine("The minimum value is: " + minValue);
         }
+        
         private static void endProgram()
         {
             Console.WriteLine("\nPlease press 'Enter' to exit");
             Console.ReadLine();
         }
+        
         private static void spaceLine()
         {
             Console.WriteLine();
